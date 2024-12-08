@@ -1,6 +1,9 @@
 .gradle
 **/build/
 !src/**/build/
+*.jar
+*.class
+*.bkp
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -19,3 +22,6 @@ gradle-app.setting
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+
+# Ignore Gradle build output directory
+build
