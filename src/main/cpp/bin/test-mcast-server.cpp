@@ -55,7 +55,14 @@ int main(int argc, char** argv)
   static volatile u_int yes = 1;
   if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, (const void*) &yes, sizeof(yes)) < 0)
   {
-    cerr << "Failed to set SO_REUSEADDR on socket" << endl;
+    int err = errno;
+    cerr << "Failed to set SO_REUSEADDR on socket: " << err << " " << strerror(err) << endl;
+  }
+
+  if (setsockopt(fd, SOL_SOCKET, SO_REUSEPORT, (const void*) &yes, sizeof(yes)) < 0)
+  {
+    int err = errno;
+    cerr << "Failed to set SO_REUSEPORT on socket: " << err << " " << strerror(err) << endl;
   }
 
   struct sockaddr_in listen_addr;
@@ -80,7 +87,8 @@ int main(int argc, char** argv)
 
   if (::bind(fd, (struct sockaddr*) &listen_addr, sizeof(listen_addr)) < 0)
   {
-    cerr << "Failed to bind socket to listen address" << endl;
+    int err = errno;
+    cerr << "Failed to bind socket to listen address" << err << " " << strerror(err) << endl;
     return 1;
   }
 

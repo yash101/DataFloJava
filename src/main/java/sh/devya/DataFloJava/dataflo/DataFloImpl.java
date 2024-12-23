@@ -20,7 +20,12 @@ import sh.devya.DataFloJava.resolver.IResolver;
  * Basic DataFlo impleementation.
  * 
  * DataFlo is an event router. It's job is to forward messages from a provider to a consumer.
- * To create the routes that messages flow through, DataFlo calls 
+ * To create the routes that messages flow through, DataFlo calls
+ * 
+ * Idea:
+ * - Multiple consumers to a topic
+ * - Multiple producers of a topic
+ * - Topic = topic string + headers: the resolver can resolve 
  */
 public class DataFloImpl implements IDataFlo {
   private IResolver resolver = null;

@@ -74,7 +74,5 @@ int main(int argc, char** argv)
       cerr << "Error sending data: " << err << " : " << strerror(err) << endl;
       return 1;
     }
-
-    std::this_thread::sleep_for(std::chrono::seconds(1));
   }
 }
